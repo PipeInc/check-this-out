@@ -9,3 +9,13 @@ variable "profile" {
   type        = string
   default     = "default"
 }
+
+variable "aws_tags" {
+  description = "AWS tags to be used in all resources"
+  type        = map(string)
+  default = {
+    owner   = "MrKoopaKiller"
+    project = "Check-this-out"
+    git     = "https://github.com/MrKoopaKiller/"
+  }
+}

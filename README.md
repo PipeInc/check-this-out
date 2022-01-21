@@ -8,8 +8,6 @@
 - [AWSCLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - configure to use default profile (See [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config))
 - [Terraform 1.1.4+](https://www.terraform.io/downloads)
 
-
-
 ### Required AWS resources
 
 The terraform code in this repo will create a couple of resources in your AWS account.
@@ -38,7 +36,6 @@ If you are satisfied with the changes, use the [`terraform apply`](https://www.t
 terraform apply "terraform.plan"
 ```
 
-After 
 ## TODO:
 - Use terraform-docs to create tf docs
 - use pre-commit
@@ -46,6 +43,6 @@ After
 
 ## Enhancements
 If necessary:
-- Enable s3 logging web traffic 
+- Enable s3 logging web traffic
 - Enable s3 Object versioning (if needed)
 - Enable s3 object encryption

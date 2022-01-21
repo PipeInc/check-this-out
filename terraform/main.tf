@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "bucket-${random_pet.this.id}"
+  bucket_name = "${random_pet.this.id}-website"
 }
 
 data "aws_iam_policy_document" "allow_public_access" {
@@ -21,6 +21,7 @@ resource "random_pet" "this" {
   length = 2
 }
 
+#tfsec:ignore:AWS052
 module "s3-host-bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "2.13.0"
@@ -39,9 +40,7 @@ module "s3-host-bucket" {
     index_document = "index.html"
     error_document = "error.html"
   }
-  tags = {
-    owner = "KoopaKiller"
-  }
+  tags = var.aws_tags
   # S3 bucket-level Public Access Block configuration
   block_public_acls       = false
   block_public_policy     = false
