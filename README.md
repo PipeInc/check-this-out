@@ -39,19 +39,25 @@ terraform apply "terraform.plan"
 Terraform will create all necessary resources on AWS, the output is the URL for the provisioned website.
 
 
-## CI
-For **C**ontinous **I**ntegration the propose here is use a Dockerfile with a set of tools to perform test in all files. 
+## Continous Integration
+For **C**ontinous **I**ntegration and quality control the [pre-commit](https://pre-commit.com) with a set of hooks are being used.
 
-Tools:
- - pre-commit
-    - Including hooks:
-        - terraform-validate
-        - terraform-fmt
-        - terraform-docs
-        - tflint
-        - tfsec
+The pre-commit hooks will make use of the standard linter, formatter and security checks to guarantee the quality of the code.
 
-        (WIP...)
+The file `.pre-commit-config.yaml` is the configurationfile for pre-commit stuffs and the file `.tflint.hcl` are the rules for the [tflint plugin](https://github.com/terraform-linters/tflint).
+
+**Hooks**
+
+- [terraform-fmt](https://github.com/antonbabenko/pre-commit-terraform#terraform_fmt): Reformat all Terraform configuration files to a canonical format
+- [terraform-validate](https://github.com/antonbabenko/pre-commit-terraform#terraform_validate): Validates all Terraform configuration files.
+- [tflint](https://github.com/antonbabenko/pre-commit-terraform#terraform_tflint): Validates all Terraform configuration files with [TFLint](https://github.com/terraform-linters/tflint)
+- [terraform-docs-go](https://github.com/terraform-docs/terraform-docs): Generate documentation from Terraform modules in markdow format.
+- [terraform_tfsec](git://github.com/antonbabenko/pre-commit-terraform): Perform static analysis of terraform templates to spot potential security issues using [TFSec](https://github.com/aquasecurity/tfsec).
+
+The idea here is run all tests inside a docker container, the code will be copied during the build and tests will be executed. If no errors happens the container will build sucessfully, otherwise it will fail meaning that the tests failed.
+
+The `Dockerbuild` file contains everything necessary to run. It could be implemented in CI step in pipeline.
+
 
 ## TODO:
 - Create flag to choose deploy or not
