@@ -36,13 +36,30 @@ If you are satisfied with the changes, use the [`terraform apply`](https://www.t
 terraform apply "terraform.plan"
 ```
 
+Terraform will create all necessary resources on AWS, the output is the URL for the provisioned website.
+
+
+## CI
+For **C**ontinous **I**ntegration the propose here is use a Dockerfile with a set of tools to perform test in all files. 
+
+Tools:
+ - pre-commit
+    - Including hooks:
+        - terraform-validate
+        - terraform-fmt
+        - terraform-docs
+        - tflint
+        - tfsec
+
+        (WIP...)
+
 ## TODO:
-- Use terraform-docs to create tf docs
-- use pre-commit
+- Create flag to choose deploy or not
 - write plan to scale (terraform?)
 
 ## Enhancements
-If necessary:
+- review deployment process (terraform should deploy or not?)
+
 - Enable s3 logging web traffic
 - Enable s3 Object versioning (if needed)
 - Enable s3 object encryption
