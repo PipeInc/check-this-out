@@ -23,5 +23,11 @@ variable "aws_tags" {
 variable "deploy" {
   description = "If true, terrafor will use null_resource to run a local awscli command to deploy the website content in S3."
   type        = bool
-  default     = "false"
+  default     = true
+}
+
+variable "cdn" {
+  description = "If true, a cloudfront distribution will be create. It adds the ability to scale to the world, by caching and optimizing costs."
+  type        = bool
+  default     = false
 }

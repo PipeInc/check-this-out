@@ -60,11 +60,12 @@ The `Dockerbuild` file contains everything necessary to run. It could be impleme
 
 
 ## TODO:
-- write plan to scale (terraform?)
+- diagrams
+- review this file
 
 ## Enhancements
 - review deployment process (terraform should deploy or not?)
-
 - Enable s3 logging web traffic
 - Enable s3 Object versioning (if needed)
 - Enable s3 object encryption
+- CI/CD coode{commit,build,pipeline}
