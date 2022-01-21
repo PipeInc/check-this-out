@@ -38,6 +38,7 @@ under construction
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_tags"></a> [aws\_tags](#input\_aws\_tags) | AWS tags to be used in all resources | `map(string)` | <pre>{<br>  "git": "https://github.com/MrKoopaKiller/",<br>  "owner": "MrKoopaKiller",<br>  "project": "Check-this-out"<br>}</pre> | no |
+| <a name="input_deploy"></a> [deploy](#input\_deploy) | If true, terrafor will use null\_resource to run a local awscli command to deploy the website content in S3. | `bool` | `"false"` | no |
 | <a name="input_profile"></a> [profile](#input\_profile) | AWS profile | `string` | `"default"` | no |
 | <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | `"us-east-1"` | no |
 

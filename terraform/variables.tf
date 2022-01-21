@@ -19,3 +19,9 @@ variable "aws_tags" {
     git     = "https://github.com/MrKoopaKiller/"
   }
 }
+
+variable "deploy" {
+  description = "If true, terrafor will use null_resource to run a local awscli command to deploy the website content in S3."
+  type        = bool
+  default     = "false"
+}

@@ -1,5 +1,7 @@
 # temp: deploy the code using local-exec
 resource "null_resource" "deployment" {
+  count = var.deploy == true ? 1 : 0
+
   triggers = {
     always_run = "${timestamp()}"
   }

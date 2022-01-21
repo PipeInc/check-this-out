@@ -60,7 +60,6 @@ The `Dockerbuild` file contains everything necessary to run. It could be impleme
 
 
 ## TODO:
-- Create flag to choose deploy or not
 - write plan to scale (terraform?)
 
 ## Enhancements

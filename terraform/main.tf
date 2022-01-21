@@ -40,7 +40,6 @@ module "s3-host-bucket" {
     index_document = "index.html"
     error_document = "error.html"
   }
-  tags = var.aws_tags
   # S3 bucket-level Public Access Block configuration
   block_public_acls       = false
   block_public_policy     = false
