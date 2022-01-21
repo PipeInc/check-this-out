@@ -1,5 +1,11 @@
+#A Apple thumbs file
+**/.DS_Store
+
 # Local .terraform directories
 **/.terraform/*
+
+# Lock files
+**/.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate
