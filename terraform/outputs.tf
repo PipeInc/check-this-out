@@ -5,5 +5,5 @@ output "website_url" {
 
 output "cdn_url" {
   description = "CDN endpoint for the website"
-  value       = var.cdn == true ? module.cdn[0].cloudfront_distribution_domain_name : null
+  value       = var.cdn ? module.cdn[0].cloudfront_distribution_domain_name : null
 }

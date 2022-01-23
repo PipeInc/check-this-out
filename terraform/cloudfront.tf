@@ -1,5 +1,5 @@
 module "cdn" {
-  count   = var.cdn == true ? 1 : 0
+  count   = var.cdn ? 1 : 0
   source  = "terraform-aws-modules/cloudfront/aws"
   version = "2.9.2"
 
