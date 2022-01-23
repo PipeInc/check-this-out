@@ -104,3 +104,8 @@ The `Dockerbuild` file contains everything necessary to run. It could be impleme
 - Enable s3 Object versioning
 - Enable s3 object encryption
 - CI/CD coode{commit,build,pipeline}
+
+## Sample website
+The sample website used in this repo is from [Free-CSS](https://www.free-css.com/free-css-templates/page270/univers).
+
+>*All of the free CSS templates, layouts & menus that are featured within [Free CSS](https://www.free-css.com/help-and-support/copyright-notice#terms-of-use) are distributed under some form of GNU/GPL, Creative Commons, author specific or public domain end user licence.*
