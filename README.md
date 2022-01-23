@@ -15,9 +15,11 @@ This is a fully scalable example for a static website: Nothing complicated or us
 
 The website could be deployed using the following commands:
 ```bash
+git clone https://github.com/PipeInc/check-this-out.git
 cd terraform/
+terraform init
 terraform plan -out terraform.plan
-terraform apply "terraform.plan" -var=deploy=true
+terraform apply "terraform.plan"
 ```
 The output should be like:
 ```
