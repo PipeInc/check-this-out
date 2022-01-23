@@ -7,7 +7,7 @@ resource "null_resource" "deployment" {
   }
 
   provisioner "local-exec" {
-    command = "../deploy.sh ${local.bucket_name}"
+    command = "cd ../ && ./deploy.sh ${local.bucket_name}"
   }
 
   depends_on = [

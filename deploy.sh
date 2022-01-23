@@ -22,4 +22,8 @@ fi
 
 # Use awscli to sync file with remote s3 bucket
 ${AWSCLI} s3 sync --profile ${AWS_PROFILE} --region ${AWS_DEFAULT_REGION} html/ s3://${BUCKET}/
-logger -p6 -s "Deployed to bucket $1 in $AWS_DEFAULT_REGION"
+if [ $? == 0 ]; then 
+    logger -p6 -s "Successfully deployed to bucket $1 in $AWS_DEFAULT_REGION"
+else
+    logger -p3 -s "Error to deploy to bucket $1 in $AWS_DEFAULT_REGION"
+fi
