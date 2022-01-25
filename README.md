@@ -1,13 +1,13 @@
 # Check-this-Out!
 
-This is a example of how to host and deploy a simple static website in AWS using [Amazon S3](https://aws.amazon.com/s3/) and [Amazon Cloudfront](https://aws.amazon.com/cloudfront/) (optional).
-The [terraform](https://www.terraform.io) is used to create all the necessary resources in AWS.
+This is an example of how to host and deploy a simple static website in AWS using [Amazon S3](https://aws.amazon.com/s3/) and [Amazon Cloudfront](https://aws.amazon.com/cloudfront/) (optional).
+The [terraform](https://www.terraform.io) is used for create everything necessary in AWS.
 
 This is a fully scalable example for a static website: Nothing complicated or using over engineering, just simple as it should be.
 
-**Why S3?** ::
-- Amazon is responsible for serving your content.
-- Scale up automatically. No additional configuration os resource is needed.
+**Why S3?**
+- Amazon is responsible for serving the content.
+- Scale up automatically. No additional configuration or resources are needed.
 - High availability. Amazon guarantees 99.99% availability of S3.
 - Fast content serving using Cloudfront CDN.
 
@@ -38,7 +38,7 @@ Use the url to access the website. :rocket:
 
 ## Terraform deployment
 
-The terraform is the responsible to create the resources in the AWS, you can choose to use terraform to deploy your code or not and also to create the cloudafront distribution or not. By default terraform will deploy the code, but not creates the cloudfront. Check the [Conditional flags](#conditional-flags) below
+The terraform is the responsible to create the resources in the AWS, you can choose to use terraform to deploy your code or not and also to create the cloudfront distribution or not. By default terraform deploys the code but not the cloudfront. Check the [Conditional flags](#conditional-flags) for more information.
 
 With all tools installed/configure let's start by cloning this repo and initializing terraform:
 
@@ -48,27 +48,27 @@ $ cd terraform/ # Change working directory to ./terraform
 $ terraform init # Terraform will initialize a local state file and download all required modules.
 ```
 
-The next step is check all required changes, [`terraform plan`](https://www.terraform.io/cli/commands/plan) creates an execution plan, which lets you preview the changes that Terraform plans to make to your infrastructure. Reads the current state file, compare with the current configuration and propose a set of changes to make in remote objects.
+The next step is check all required changes, [`terraform plan`](https://www.terraform.io/cli/commands/plan) creates an execution plan, which lets you preview the upcoming changes. Reads the current state file and compare with the current configuration to propose a set of changes to make in remote objects.
 
 ```bash
 terraform plan -out terraform.plan
 ```
 
-This will create the file `terraform.plan` with all necessary changes.
+This creates the file `terraform.plan` with all necessary changes.
 
-If you are satisfied with the changes, use the [`terraform apply`](https://www.terraform.io/cli/commands/apply) to apply the changes proposed by the plan in the previous step.
+If you are satisfied with the changes, use the [`terraform apply`](https://www.terraform.io/cli/commands/apply) to apply.
 
-> :warning: **Keep in mind**: charges could be applied in your AWS account. Check here for the [AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html)
+> :warning: **Keep in mind**: charges could be applied in your AWS account. Check the [AWS Free Tier](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-free-tier.html) page for more information.
 
 ```bash
 terraform apply "terraform.plan"
 ```
 
-Terraform will create all necessary resources on AWS, the output is the URL for the provisioned website.
+Terraform creates all necessary resources on AWS and give you the website url.
 
 ### Conditional flags
 
-If necessary you can use the flags `-var=deploy=true|false` and `-var=cdn=true|false` to deploy the code using terraform and create the cloudfront resource. Check the README file into `terraform` directory to more details.
+If necessary you can use the flags `-var=deploy=true|false` and `-var=cdn=true|false` in terraform `plan` and `apply`t command. It allows terraform deploy your code to S3 and also enable the Amazon Cloufront CDN on your website. Check the README file into `terraform` directory for details.
 
 **Examples:**
 
@@ -87,7 +87,7 @@ For **C**ontinous **I**ntegration and quality control the [pre-commit](https://p
 
 The pre-commit hooks will make use of the standard linter, formatter and security checks to guarantee the quality of the code.
 
-The file `.pre-commit-config.yaml` is the configurationfile for pre-commit stuffs and the file `.tflint.hcl` are the rules for the [tflint plugin](https://github.com/terraform-linters/tflint).
+The file `.pre-commit-config.yaml` is the configuration file for pre-commit stuffs and the file `.tflint.hcl` are the rules for the [tflint plugin](https://github.com/terraform-linters/tflint).
 
 **Hooks**
 
@@ -97,15 +97,15 @@ The file `.pre-commit-config.yaml` is the configurationfile for pre-commit stuff
 - [terraform-docs-go](https://github.com/terraform-docs/terraform-docs): Generate documentation from Terraform modules in markdow format.
 - [terraform_tfsec](git://github.com/antonbabenko/pre-commit-terraform): Perform static analysis of terraform templates to spot potential security issues using [TFSec](https://github.com/aquasecurity/tfsec).
 
-The idea here is run all tests inside a docker container, the code will be copied during the build and tests will be executed. If no errors happens the container will build sucessfully, otherwise it will fail meaning that the tests failed.
+The idea here is run all tests inside a docker container, the code will be copied and tested during the build process. If docker build complete successfully the code are good, if it fails then something should be reviewed.
 
 The `Dockerbuild` file contains everything necessary to run. It could be implemented in CI step in pipeline.
 
 ## Enhancements
-- Enable s3 logging web traffic
-- Enable s3 Object versioning
-- Enable s3 object encryption
-- CI/CD coode{commit,build,pipeline}
+- Enable s3 logging web traffic;
+- Enable s3 object versioning;
+- Enable s3 object encryption;
+- CI/CD code{commit,build,pipeline} / jenkins
 
 ## Sample website
 The sample website used in this repo is from [Free-CSS](https://www.free-css.com/free-css-templates/page270/univers).
